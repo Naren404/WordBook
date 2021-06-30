@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyString
+  word_word_description: MyString
+  word_link: MyString
+  word_category: one
+  user: one
+
+two:
+  word: MyString
+  word_word_description: MyString
+  word_link: MyString
+  word_category: two
+  user: two

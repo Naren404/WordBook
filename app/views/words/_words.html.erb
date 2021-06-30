@@ -1,0 +1,52 @@
+<div class="my-2">
+    <% @words.each do |word| %>
+        <span 
+        class="badge rounded-pill bg-light text-dark p-2" 
+        onclick="modal_value(this)" 
+        style="cursor:pointer" 
+        word="<%= word.word %>"
+        word-description="<%= word.word_word_description %>"
+        word-link="<%= word.word_link %>"
+        word-category="<%= word.word_category.name %>"
+        data-bs-toggle="modal" 
+        data-bs-target="#wordModal">
+          <%= word.word %>
+        </span>
+    <% end %>
+</div>
+
+
+<!-----------------modal to show description of clicked words-------------->
+<div class="modal fade" id="wordModal" tabindex="-1" aria-labelledby="wordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="wordModalLabel">
+            
+        </h5><span class="badge rounded-pill bg-primary mx-2" id="word-catgeory"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="word-description"></div>
+        <hr />
+        <a href="" id="word-link" target="_blank">Read More...</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-----------js for word data to modal------------->
+<script type="text/javascript">
+	function modal_value(e){
+		var word = e.getAttribute("word");
+		var word_description = e.getAttribute("word-description");
+		var word_category = e.getAttribute("word-category");
+        var word_link = e.getAttribute("word-link");
+
+		document.getElementById("wordModalLabel").innerHTML= word;
+        document.getElementById("word-catgeory").innerHTML= word_category;
+        document.getElementById("word-description").innerHTML= word_description;
+        document.getElementById("word-link").href= word_link;
+	
+	}
+</script>

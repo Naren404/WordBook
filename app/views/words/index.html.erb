@@ -1,0 +1,70 @@
+<div class="container my-2">
+    <div class="d-flex flex-md-row flex-column">
+      <div class="p-1">
+          <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              All Categories
+          </button>
+      </div>
+      <div class="p-1">
+          <button type="button" class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#newWordCategoryModal">
+              Add New Word Category <i class="fas fa-plus-circle"></i>
+          </button>
+      </div>
+      <div class="p-1">
+          <button type="button" class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#newWordModal">
+              Add New Word <i class="fas fa-plus-circle"></i>
+          </button>
+      </div>
+      <div class="p-1">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete,class:"btn btn-outline-danger w-100"  %>
+      </div>
+    </div>
+  <hr />
+  <!--------------- words of currently requested category----------------->
+    <%= render partial: "words" %>
+<!----------------------------------------------------------------------->
+</div>
+
+
+<!------------------------side bar---for all categories----offcanvas--------------------->
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <p id="offcanvasRightLabel"></p>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="container-fluid">
+        <%= render partial: "word_categories/word_category", locals:{word_categories:@word_categories} %>
+    </div>
+  </div>
+</div>
+<!-------------$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$------------------------->
+
+<!-- Modal for adding new category -->
+<div class="modal fade" id="newWordCategoryModal" tabindex="-1" aria-labelledby="newWordCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newWordCategoryModalLabel">New Word Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render partial:"word_categories/form", locals:{word_category:@word_category} %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for adding new word -->
+<div class="modal fade" id="newWordModal" tabindex="-1" aria-labelledby="newWordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newWordModalLabel">New Word Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render partial:"form" %>
+      </div>
+    </div>
+  </div>
+</div>

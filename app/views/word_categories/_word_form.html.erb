@@ -1,0 +1,7 @@
+<%= form_for @word, url:words_path, remote: true do |f| %>
+
+    <%= f.text_field :word, class:"form-control mb-2",placeholder:"Word" %>
+    <%= f.text_field :word_word_description, class:"form-control mb-2",placeholder:"Word Description" %>
+    <%= f.text_field :word_link, class:"form-control mb-2",placeholder:"Source Link" %>
+
+<% end %>

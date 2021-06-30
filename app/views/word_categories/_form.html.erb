@@ -1,0 +1,19 @@
+<%= form_for word_category, remote:"true" do |f| %>
+
+
+
+<div class="mb-3">
+    <%= f.text_field :name, class:"form-control",placeholder:"Enter Word Category", required:true %>
+</div>
+
+<!-------------form buttons-------------------->
+  <div class="d-flex flex-row mt-2">
+    <div class="flex-fill">
+        <span class="btn btn-outline-danger form-control" data-bs-dismiss="modal">Cancel</span>
+    </div>
+    <div class="flex-fill">
+    <%= f.submit "Add", disable_with: 'Adding...',class:"btn btn-outline-success form-control" %>
+    </div>
+  </div>
+  <!---------------------#########################-------------------------->
+<% end %>

@@ -1,9 +1,9 @@
 <%= form_for @word, remote:"true" do |f| %>
 <div class="mb-3">
     <%= f.text_field :word, class:"form-control mb-2",placeholder:"Word", required:true %>
-    <%= f.select :word_category_id, options_from_collection_for_select(WordCategory.all, 'id', 'name'),{:prompt =>"Select Word Category"},class:"form-control mt-2",required:true %>
+    <%= f.select :word_category_id, options_from_collection_for_select(WordCategory.all, 'id', 'name'),{:prompt =>"Select Word Category"},class:"form-control mb-2",required:true %>
     <%= f.text_area :word_word_description, class:"form-control mb-2",placeholder:"Word Description", required:true %>
-    <%= f.text_field :word_link, class:"form-control mb-2",placeholder:"Source Link" %>
+    <%= f.text_field :word_link, class:"form-control mb-2 text-primary",placeholder:"Source Link" %>
 </div>
 
 <!-------------form buttons-------------------->

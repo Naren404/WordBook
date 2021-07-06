@@ -1,9 +1,7 @@
-<%= form_for word_category, remote:"true" do |f| %>
-
-
-
+<%= form_for @link do |f| %>
 <div class="mb-3">
-    <%= f.text_field :name, class:"form-control",placeholder:"Enter Word Category", required:true %>
+    <%= f.text_field :title, class:"form-control mb-2",placeholder:"Title", required:true %>
+    <%= f.text_field :source, class:"form-control mb-2 text-primary",placeholder:"Source Link", required:true %>
 </div>
 
 <!-------------form buttons-------------------->

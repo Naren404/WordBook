@@ -1,0 +1,10 @@
+
+<ul class="list-group" id="myLinks">
+    <% @links.each do |link| %>
+    <li class="list-group-item mb-2 shadow links">
+        <strong class="link-title"><%= link.title %></strong><br />
+        <a href="<%= link.source %>" target="_blank"><span class="text-primary"></span><%= link.source %></a>
+    </li>
+    <% end %>
+</ul>
+

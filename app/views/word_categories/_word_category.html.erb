@@ -1,8 +1,8 @@
 <div class="row mx-2">
     <% word_categories.each do |word_category| %>
-        <div class="col-6 col-md-2">
+        <div class="col-6 col-md-4">
          <%= link_to  words_path(word_category:word_category) do %>
-            <div class="card p-1  text-center">
+            <div class="card p-1  text-center mb-2">
                 <i class="fas fa-folder fa-2x text-warning"></i>
                 <div><%= word_category.name %></div>
             </div>

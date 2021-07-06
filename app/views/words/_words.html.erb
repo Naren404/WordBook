@@ -1,7 +1,7 @@
-<div class="my-2">
+<div class="my-2" id="myWords">
     <% @words.each do |word| %>
         <span 
-        class="badge rounded-pill bg-light text-dark p-2" 
+        class="badge rounded-pill bg-light text-dark p-2 words border" 
         onclick="modal_value(this)" 
         style="cursor:pointer" 
         word="<%= word.word %>"
@@ -10,7 +10,7 @@
         word-category="<%= word.word_category.name %>"
         data-bs-toggle="modal" 
         data-bs-target="#wordModal">
-          <%= word.word %>
+          <span class="word"><%= word.word %></span>
         </span>
     <% end %>
 </div>

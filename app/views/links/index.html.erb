@@ -1,0 +1,60 @@
+<div class="container my-2">
+    <div class="d-flex flex-column flex-md-row mb-3">
+      <div class="p-2">
+        <button type="button" class="btn btn-outline-success w-100 btn-sm" data-bs-toggle="modal" data-bs-target="#newLinkModal">
+              Add New Link <i class="fas fa-plus-circle"></i>
+          </button>
+      </div>
+      <div class="p-2">
+              <input class="form-control form-control-sm" type="search" id="link_search" onkeyup="linkFilter()" placeholder="Search for the LINK." aria-label="Search">
+      </div>
+    </div>
+  <hr />
+  <!--------------- links of currently requested category----------------->
+    <%= render partial: "links" %>
+<!----------------------------------------------------------------------->
+</div>
+
+<!------------modals for this page---------------->
+
+<!-- Modal for adding new link -->
+<div class="modal fade" id="newLinkModal" tabindex="-1" aria-labelledby="newLinkModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newLinkModalLabel">Add New Link</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render partial:"form" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!----------------will be moved to javascript folder later---------------->
+<script type="text/javascript">
+	
+	function linkFilter(){
+
+      input = document.getElementById("link_search");
+      filter_link = input.value.toUpperCase();
+
+      linkContainer = document.getElementById("myLinks");
+      links = linkContainer.getElementsByClassName("links");
+
+      for (i = 0; i < links.length; i++) {
+        link = links[i].querySelector(".link-title");
+
+        if (link.innerText.toUpperCase().indexOf(filter_link) > -1) {
+            links[i].style.display = "";
+        } else {
+            links[i].style.display = "none";
+        }
+    }
+
+    }
+
+
+</script>

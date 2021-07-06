@@ -1,42 +1,26 @@
-<!------------------------------NavBar------------------------------------------------>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <%= link_to root_path, class:"navbar-brand" do %>
-        <%= image_tag "wordbooklogo.png", width:"30", height:"30", alt:"WordBook" %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item p-1">
-          <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-              All Categories
-          </button>
-        </li>
-        <li class="nav-item p-1">
-          <button type="button" class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#newWordCategoryModal">
-              Add New Word Category <i class="fas fa-plus-circle"></i>
-          </button>
-        </li>
-        <li class="nav-item p-1">
-          <button type="button" class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#newWordModal">
-              Add New Word <i class="fas fa-plus-circle"></i>
-          </button>
-        </li>
-      </ul>
-      <div class="d-flex">
-        <%= link_to "Logout", destroy_user_session_path, method: :delete,class:"btn btn-outline-danger w-100"  %>
-      </div>
-      
-    </div>
-  </div>
-</nav>
-<!-------------------##############################################------------------------>
+
 
 <div class="container my-2">
-    <input class="form-control me-2" type="search" placeholder="Search for the WORD." aria-label="Search">
-
+    <div class="d-flex flex-column flex-md-row mb-3">
+      <div class="p-2">
+        <button class="btn btn-outline-success w-100 btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              Word Category Filter <i class="fas fa-filter"></i>
+          </button>
+      </div>
+      <div class="p-2">
+        <button type="button" class="btn btn-outline-success w-100 btn-sm" data-bs-toggle="modal" data-bs-target="#newWordCategoryModal">
+              Add New Word Category <i class="fas fa-plus-circle"></i>
+          </button>
+      </div>
+      <div class="p-2">
+        <button type="button" class="btn btn-outline-success w-100 btn-sm" data-bs-toggle="modal" data-bs-target="#newWordModal">
+              Add New Word <i class="fas fa-plus-circle"></i>
+          </button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control form-control-sm" type="search" id="word_search" onkeyup="wordFilter()" placeholder="Search for the WORD." aria-label="Search">
+  </div>
   <hr />
   <!--------------- words of currently requested category----------------->
     <%= render partial: "words" %>
@@ -45,7 +29,7 @@
 
 
 <!------------------------side bar---for all categories----offcanvas--------------------->
-<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
     <p id="offcanvasRightLabel"></p>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -86,3 +70,30 @@
     </div>
   </div>
 </div>
+
+
+<!----------------will be moved to javascript folder later---------------->
+<script type="text/javascript">
+	
+	function wordFilter(){
+
+      input = document.getElementById("word_search");
+      filter_word = input.value.toUpperCase();
+
+      wordContainer = document.getElementById("myWords");
+      words = wordContainer.getElementsByClassName("words");
+
+      for (i = 0; i < words.length; i++) {
+        word = words[i].querySelector(".word");
+
+        if (word.innerText.toUpperCase().indexOf(filter_word) > -1) {
+            words[i].style.display = "";
+        } else {
+            words[i].style.display = "none";
+        }
+    }
+
+    }
+
+
+</script>
